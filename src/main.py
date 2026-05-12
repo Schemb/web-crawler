@@ -1,8 +1,11 @@
+import crawler
+
 # This command instructs the search tool to crawl the web-
 # site, build the index, and save the resulting index into the file system.
 # For simplicity, you can save the entire index to a single file.
 def build():
     print("Building index...")
+    websiteBody = crawler.request_website()
 
 # This command loads the index from the file system. Ob-
 # viously, this command will only work if the index has been created
