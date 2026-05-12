@@ -23,13 +23,46 @@ def printIndex(word):
 # and ’friends’.
 def find(phrase):
     print("Finding pages containing '" + phrase + "' in index...")
-    
+
 
 # Main function
-build()
+while True:
 
-load()
+    # Parse User Input
+    content = ""
+    userInput = input()
+    command = userInput.split(' ', 1)[0]
+    try:
+        content = userInput.split(' ', 1)[1]
+    except:
+        pass
 
-printIndex("Nonsense")
-
-find("indifference")
+    # Process input command
+    match command:
+        case "build":
+            if content != "":
+                print("Too many arguments for statement 'build'")
+                continue
+            build()
+        case "load":
+            if content != "":
+                print("Too many arguments for statement 'load'")
+                continue
+            load()
+        case "print":
+            if content == "":
+                print("Argument expected: print <arg>")
+                continue
+            printIndex(content)
+        case "find":
+            if content == "":
+                print("Argument expected: find <arg>")
+                continue
+            find(content)
+        case "exit":
+            if content != "":
+                print("Too many arguments for statement 'exit'")
+                continue
+            break
+        case _:
+            print("Invalid command!")
